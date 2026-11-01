@@ -22,13 +22,27 @@ export type AuthError =
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const STARTER_ACCOUNT: StoredAccount = {
+  id: 'owner-matrouh-account',
+  name: 'hadeermohamed',
+  email: 'hadeermohamed@zumra.sa',
+  salt: '3ce8b998589ed9b08edaee10b5f8596c',
+  hash: 'b5ad0442adf75760fefa2091f39aec4784eba59addeb506536da320c9bdc8aed',
+};
+
 const readUsers = (): StoredAccount[] => {
+  let users: StoredAccount[] = [];
   try {
     const raw = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
-    return Array.isArray(raw) ? raw : [];
+    users = Array.isArray(raw) ? raw : [];
   } catch {
-    return [];
+    users = [];
   }
+  if (!users.some((user) => user.email === STARTER_ACCOUNT.email)) {
+    users = [...users, STARTER_ACCOUNT];
+    writeUsers(users);
+  }
+  return users;
 };
 
 const writeUsers = (users: StoredAccount[]) => {
