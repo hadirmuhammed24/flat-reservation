@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  marsa-matrouh-flats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: marsa_matrouh_flats_app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-80}:80"
+    environment:
+      - NODE_ENV=production

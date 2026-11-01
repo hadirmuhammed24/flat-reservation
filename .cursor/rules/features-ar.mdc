@@ -1,0 +1,15 @@
+---
+description: Keep the Arabic feature guide in sync with the product
+alwaysApply: true
+---
+
+# Arabic feature guide
+
+`FEATURES_AR.md` is the Arabic explanation of every visitor- and owner-facing feature.
+
+When a change adds, removes, or changes a feature someone can see or use (pages, filters, booking, accounts, listings, payments, areas, copy that changes behavior), update `FEATURES_AR.md` in the same change.
+
+- Write the guide in Arabic, in the same sections and plain style already used there.
+- Describe what the person can do and what is stored only on this device. Do not describe implementation files.
+- If a feature is removed, delete it from the guide. Do not leave a stale step.
+- Skip the update for internal refactors that do not change what people can do.
